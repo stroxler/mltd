@@ -1,0 +1,17 @@
+[project]
+name = "mltd"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "beartype>=0.22.2",
+    "docarray>=0.41.0",
+    "ipython>=9.6.0",
+    "jaxtyping>=0.3.3",
+    "jupyter>=1.1.1",
+    "nptyping>=2.5.0",
+    "numpydantic>=1.7.0",
+    "pydantic>=2.12.0",
+    "torch>=2.8.0",
+]
