@@ -19,8 +19,8 @@ def matrix_multiply(
 @jaxtyped(typechecker=beartype.beartype)
 def tensor_multiply(
     x: Float[Tensor, "a b"],
-    y: Float[Tensor, "b c*"],
-) -> Float[Tensor, "a c*"]:
+    y: Float[Tensor, "b *c"],
+) -> Float[Tensor, "a *c"]:
     return x @ y
 
 
@@ -67,7 +67,7 @@ def predict(
 class Synthetic:
     beta: Float[Tensor, "{p} {k}"]
     x: Float[Tensor, "{n} {p}"]
-    y: Float[Tensor, "{n} {n}"]
+    y: Float[Tensor, "{n} {k}"]
 
 
 @jaxtyped(typechecker=beartype.beartype)
