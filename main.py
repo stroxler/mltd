@@ -9,6 +9,13 @@ import beartype
 # Intro ------------
 
 @jaxtyped(typechecker=beartype.beartype)
+def determinant_2x2(
+    x: Float[Tensor, "2 2"]
+) -> Float[Tensor, ""]:
+    return x[0, 0] * x[1, 1] - x[0, 1] * x[1, 0]
+
+
+@jaxtyped(typechecker=beartype.beartype)
 def matrix_multiply(
     x: Float[Tensor, "a b"],
     y: Float[Tensor, "b c"],
@@ -18,9 +25,9 @@ def matrix_multiply(
 
 @jaxtyped(typechecker=beartype.beartype)
 def tensor_multiply(
-    x: Float[Tensor, "a b"],
-    y: Float[Tensor, "b *c"],
-) -> Float[Tensor, "a *c"]:
+    x: Float[Tensor, "*a b"],
+    y: Float[Tensor, "b c"],
+) -> Float[Tensor, "*a c"]:
     return x @ y
 
 
@@ -40,6 +47,13 @@ def random_chisq(
     return torch.randn(n) ** 2
 
 
+@jaxtyped(typechecker=beartype.beartype)
+def tail(
+    x: Float[Tensor, "dim"],
+) -> Float[Tensor, "dim-1"]:
+    return x[1:]
+
+
 # Regression example ------------
 
 
@@ -48,7 +62,7 @@ def multiple_linear_regression(
     x: Float[Tensor, "n p"],
     y: Float[Tensor, "n k"]
 ) -> Float[Tensor, "p k"]:
-    return torch.linalg.solve(x.t @ x, y)
+    return torch.linalg.solve(x.t() @ x, x.t() @ y)
 
 
 @jaxtyped(typechecker=beartype.beartype)
