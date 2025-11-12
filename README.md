@@ -1,5 +1,8 @@
 # Machine Learning Typing Demo
 
+This repository has some code I used to test-drive the `jaxtyping` library so that
+I could verify content for a Pytorch conference poster.
+
 ## Setup
 
 Using `uv`:
